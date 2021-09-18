@@ -1,45 +1,3 @@
-function keysFoundAnd(keywords, data)
-{
-	for(i=0; i<keywords.length; i++)
-	{
-		if(!data.match(new RegExp(keywords[i].replace(/\s{2,}/g, ' '), "i")))
-		{
-			return false;
-		}
-	}
-	return true;
-}
-function keysFoundOr(keywords, data)
-{
-	for(i=0; i<keywords.length; i++)
-	{
-		if(data.match(new RegExp(keywords[i].replace(/\s{2,}/g, ' '), "i")))
-		{
-			return true;
-		}
-	}
-	return false;
-}
-function findNegativeKeys(keywords2,data)
-{
-	if(keywords2[0]=="")
-	{
-	return false
-	}
-	for(i=0; i<keywords2.length; i++)
-	{
-		if(data.match(new RegExp(keywords2[i], "i")))
-		{
-			return true;
-		}
-	}
-	return false;
-}
-function getRndRefreshRange(min, max) {
-
-	return Math.floor(Math.random() * (max - min + 1) ) + min;
-}
-
 function discord_message(product, thumbnail, channel = "general") {
 	
 	    if(channel == "realizado"){
@@ -70,71 +28,11 @@ function discord_message(product, thumbnail, channel = "general") {
 
 chrome.extension.sendMessage({action: "isRecordingOn"}, function(response) {
 	if(response.action == 'true'){
-		var	size = response.shoesSize;
+	
 		var quantity = response.quantity;
-		var	KeywordsType = response.KeywordsType;
 		var	soundAlert = response.soundAlert;
-		var	size2 = response.size2;
-		var	low = response.low;
-		var	high = response.high;
-		var	keywords = response.keywords;
-		var	keywords2 = response.keywords2;
-        var timeoutMin = Number(response.timeOut);    
-        var timeoutMax = Number(response.timeoutMax);   
-		var key=response.ckey;
-		var captchaSolver=response.captchaSolver;
-        var autocheckoutselect = response.autocheckoutselect;
-        var checkoutType = response.checkoutType;
-        var checkoutDelay = response.checkoutDelay;       
-		var username2 = response.username2;
-		var password2 = response.password2;		
-		var AccountBilling = response.AccountBilling;
-        var billCountry = response.billCountry;
-        var storeFirstName = response.storeFirstName;
-        var storeLastName = response.storeLastName;
-        var storeEmail = response.storeEmail;
-        var storePhone = response.storePhone;
-		var billFirstName = response.billFirstName;
-        var billLastName = response.billLastName;
-        var billStreetAddress1 = response.billStreetAddress1;
-        var billStreetAddress2 = response.billStreetAddress2;
-        var billZipCode = response.billZipCode;
-        var billCity = response.billCity;
-        var billState = response.billState;
-        var billPhone = response.billPhone;
-        var billEmail = response.billEmail; 
-        var billStateKythnyc = response.billStateKythnyc;
-        var shipStateKythnyc = response.newStateKythnyc; 
-        var shippingAddress = response.shippingAddress;
-        var shipCountry = response.newCountry;
-        var shipFirstName = response.newFirstName;
-        var shipLastName = response.newLastName;
-        var shipStreetAddress1 = response.newStreetAddress1;
-        var shipStreetAddress2 = response.newStreetAddress2;
-        var shipZipCode = response.newZipCode;
-        var shipCity = response.newCity;
-        var shipState = response.newState;
-        var shipPhone = response.newPhone;
-        var shipEmail = response.newEmail;        
-        var paymentMethod = response.paymentMethod;
-        var paymentCard = response.paymentCard;
-        var cardNumber = response.cardNumber;
-        var expireMonth = response.expireMonth;
-        var expireYear = response.expireYear;
-        var cardCVV = response.cardCVV;
-        var giftCard = response.giftCard;
-        var giftCardNumber = response.giftCardNumber;
-        var giftCardPassword = response.giftCardPassword;
-        var paypalEmail = response.paypalEmail;
-        var paypalPassword = response.paypalPassword;
-        var cardHolderName = response.cardHolderName;
-		var billStateShort = response.billStateShort;
-		var shipStateShort = response.newStateShort;
 		var Url = response.Url;		
-        expireYear = "20".concat(expireYear); 
-
-
-
+     
 		var  c0000xxxx = ".bees-product-detail"; // 
 		var  c0001xxxx = "requested-qty"; // classinputcount
 		var  c0002xxxx = "bees-add-to-cart"; //  classbuttonaddcart
