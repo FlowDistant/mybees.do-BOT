@@ -65,8 +65,8 @@ chrome.extension.onMessage.addListener(
         action: localStorage['recording'], 
         
         soundAlert: localStorage['soundAlert'],
-		site: localStorage['site'],
 		quantity: localStorage['quantity'], 
+		autocheckoutselect: localStorage['autocheckoutselect'],
 		Url: localStorage['url']
 
         });

@@ -31,6 +31,7 @@ chrome.extension.sendMessage({action: "isRecordingOn"}, function(response) {
 	
 		var quantity = response.quantity;
 		var	soundAlert = response.soundAlert;
+		var autocheckoutselect = response.autocheckoutselect;
 		var Url = response.Url;		
      
 		var  c0000xxxx = ".bees-product-detail"; // 
