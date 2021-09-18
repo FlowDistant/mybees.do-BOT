@@ -1,0 +1,35 @@
+ {
+   "background": {
+      "permissions": [ "http://*/*", "https://*/*"],
+      "scripts": [ "lib/jquery.js", "background.js" ]
+   },
+   "browser_action": {
+      "default_icon": "img/icon128.png",
+      "default_popup": "popup.html"
+   },
+   "content_scripts": [ 
+   {
+      "js": [ "lib/jquery.js", "sites/WalmartUS.js" , "lib/bill.js", "lib/key.js"],
+      "matches": [ "*://*/*", "*://*.walmart.com/*","*://*.google.com/*","https://2captcha.com/*"  ],    
+      "run_at": "document_start"
+   }, {
+      "js": [ "lib/jquery.js", "sites/WalmartUS.js" , "lib/bill.js", "lib/key.js"],
+      "matches": [ "*://mybees.do/*","*://*.b2clogin.com/*","*://*.google.com/*","https://2captcha.com/*"  ],    
+      "run_at": "document_end"
+   }, {   
+      "js": [ "lib/jquery.js", "paypal.js" ],
+      "matches": [ "*://*.paypal.com/*" ],
+	  "all_frames": true,
+	  "run_at": "document_end"	  
+   }
+   ],
+   "description": "Walmart Bot developed and sold by MostAdvancedBot. Restricted to one computer only",
+   "icons": {
+      "128": "img/icon128.png"
+   },
+   "manifest_version": 2,
+   "name": "Walmart Bot By MostAdvancedBot.Com",
+   "permissions": [ "cookies", "browsingData", "tabs", "system.cpu","http://*/*", "https://*/*","webRequest", "webRequestBlocking" ],
+   "version": "1.4.1",
+   "web_accessible_resources": [  ]
+}

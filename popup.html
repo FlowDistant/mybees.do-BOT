@@ -1,0 +1,445 @@
+<!doctype html>
+<head>
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <script src="lib/jquery.js"></script>
+  <script src="popup.js"></script>
+  <title>Walmart Bot By MostAdvancedBot</title>   
+</head>
+<body background="img/image.jpg" style="width:400px;color:white;">
+	<div align="center">
+		<a href="https://mostadvancedbot.com" target="_new"><span id="title" align="center">
+			<h2>Walmart Bot</h2></span>
+		</a>
+	</div>
+	<hr size=10 width=400 align="center" style="padding-left:20px;padding-right:20px;">
+    <div class="mainContainer form-horizontal" style="padding-left:50px;padding-right:40px;">
+		<span id="update" style="color:red; font-size:16px;"></span>
+        <div class="formContainer form-group">
+			<label class="col-sm-2 control-label">Select Website:</label>
+			<div class="col-sm-10">
+				<select name="site" id="site" class="size-dropdown form-control">
+					<option value="com">walmart.com</option>					
+					<option value="ca">walmart.ca</option>					
+				</select>
+			</div>	
+			<label class="col-sm-2 control-label">Select Product Finding Method:</label>
+			<div class="col-sm-10">
+				<select name="productSearch" id="productSearch" class="size-dropdown form-control">
+					<option value="directLink">By Direct Link</option>					
+					<option value="keywordSearching">By Site Search</option>
+					<option value="ProductpageSearching">From A Products/Collection Page Link</option>		
+				</select>				
+			</div>
+			<div id="product_page">
+				 <label class="col-sm-2 control-label">Enter The Collection Page Link:</label>
+				<div class="col-sm-10">
+					<input type="text" name="purl" id="purl" class="form-control" placeholder="Enter the collection page url">
+				</div>
+			</div>
+			<div id="url_div">
+				 <label class="col-sm-2 control-label">Enter The Product Page URL:</label>
+				<div class="col-sm-10">
+					<input type="text" name="url" id="url" class="form-control" placeholder="Enter product page url">
+				</div>
+			</div>
+			<div id="keywords_div">
+				<label class="col-sm-2 control-label">Keywords Operation:</label>	
+				<div class="col-sm-10">
+					<select name="KeywordsType" id="KeywordsType" class="size-dropdown form-control">
+						<option value="and" selected>AND</option>
+						<option value="or" >OR</option>
+					</select>
+				</div>	
+				<label class="col-sm-2 control-label">Enter Product Keywords(unique):</label>
+				<div class="col-sm-10">
+					<input name="keywords" id="keywords" type="text"  class="form-control" placeholder="Enter product keywords separated by comma(,)"/>
+				</div>
+															
+				<label class="col-sm-2 control-label">Keywords Negative Keyword:</label>	
+				<div class="col-sm-10">
+					<input type="text" name="keywords2"   id="keywords2"  class="form-control" placeholder="Enter product Negative keywords. Must be separated by comma(,)">
+				</div>													
+			</div>		
+			<div class="col-sm-10" style="display:none;">
+				<label class="col-sm-2 control-label">Select Size:</label>
+				<select name="shoesSize" id="shoesSize" class="size-dropdown form-control">
+					<option value="custom" disabled>Custom Size</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5"> 5</option>
+					<option value="5.5"> 5.5</option>
+					<option value="6"> 6</option>
+					<option value="6.5"> 6.5</option>
+					<option value="7"> 7</option>
+					<option value="7.5"> 7.5</option>
+					<option value="8"> 8</option>
+					<option value="8.5"> 8.5</option>
+					<option value="9"> 9</option>
+					<option value="9.5"> 9.5</option>
+					<option value="10"> 10</option>
+					<option value="10.5"> 10.5</option>
+					<option value="11"> 11</option>
+					<option value="11.5"> 11.5</option>
+					<option value="12"> 12</option>
+					<option value="12.5"> 12.5</option>
+					<option value="13"> 13</option>
+					<option value="13.5"> 13.5</option>
+					<option value="14"> 14</option>
+					<option value="14.5"> 14.5</option>
+					<option value="15"> 15</option>
+					<option value="15.5"> 15.5</option>
+					<option value="16"> 16</option>
+					<option value="16.5"> 16.5</option>
+					<option value="17"> 17</option>
+					<option value="17.5"> 17.5</option>
+					<option value="33">33</option>
+					<option value="33.5">33.5</option>
+					<option value="34">34</option>
+					<option value="34.5">34.5</option>
+					<option value="35">35</option>
+					<option value="35.5">35.5</option>
+					<option value="36">36</option>
+					<option value="36.5">36.5</option>
+					<option value="37">37</option>
+					<option value="37.5">37.5</option>
+					<option value="38">38</option>
+					<option value="38.5">38.5</option>
+					<option value="39">39</option>
+					<option value="39.5">39.5</option>
+					<option value="40">40</option>	
+					<option value="40.5">40.5</option>	
+					<option value="41">41</option>	
+					<option value="41.5">41.5</option>
+					<option value="42">42</option>						
+					<option value="42.5">42.5</option>
+					<option value="43">43</option>
+					<option value="43.5">43.5</option>
+					<option value="44">44</option>	
+					<option value="44.5">44.5</option>	
+					<option value="45">45</option>	
+					<option value="45.5">45.5</option>	
+					<option value="46">46</option>	
+					<option value="46.5">46.5</option>	
+					<option value="47">47</option>	
+					<option value="47.5">47.5</option>	
+					<option value="48">48</option>						
+				</select>
+				<div id="customSizeDiv">
+					<label class="col-sm-2 control-label">Enter Custom Size:</label>
+					<div class="col-sm-10">
+						<input name="size2" type="text" class="form-control" placeholder="Please enter custom size same as website" id="size2" />
+					</div>
+				</div>				
+			</div>	
+			
+			<label class="col-sm-2 control-label">Price Range</label>
+			<div class="col-sm-10">
+				<ul style="list-style-type:none; display: inline-flex;padding: 0px;margin-bottom: 0px;">
+					<li><input type="number"  name="low" id="low" class="form-control" placeholder="low" min="0" style="text-align:center;"></li>
+					<li><h4 style="padding:0px 10px;">  To </h4></li>
+					<li><input type="number" name="high" id="high" class="form-control" placeholder="high" min="0" style="text-align:center;"></li>
+				</ul>
+			</div>	
+			<label class="col-sm-2 control-label">Enter quantity:</label>
+			<div class="col-sm-10">
+				<input name="quantity" type="number" class="form-control" min="1" max="2" placeholder="Enter quantity" id="quantity" />
+			</div>
+			<label class="col-sm-2 control-label">Sound Alert After Add To Cart:</label>
+			<div class="col-sm-10">
+				<select name="soundAlert" id="soundAlert" class="size-dropdown form-control">
+					<option  value="yes" selected>Yes</option>  
+					<option  value="no">No</option> 					
+				</select>
+			</div>  
+								
+				
+            <div class="col-sm-10" id="info1" style="display:none; color:red;">
+                <label>Keywords are uniquely identifying continuous text to identify the product. Multiple keywords must be separated by comma(,) only</label>
+            </div>			
+			<label class="col-sm-2 control-label">Enter Refresh Time Range:</label>
+			<div class="col-sm-10">
+				<ul style="list-style-type:none; display: inline-flex;padding: 0px;margin-bottom: 0px;">
+					<li><input type="number"  name="timeout" id="timeout" class="form-control" placeholder="min" style="text-align:center;"></li>
+					<li><h4 style="padding:0px 10px;">  To </h4></li>
+					<li><input type="number" name="timeoutMax" id="timeoutMax" class="form-control" placeholder="Max" style="text-align:center;"></li>
+				</ul>
+			</div>
+			<label class="col-sm-2 control-label">Enable Captcha Auto Solver:</label>
+			<div class="col-sm-10">
+				<select name="captchaSolver" id="captchaSolver" class="size-dropdown form-control">                   
+					<option value="no" selected >No</option>  
+					<option value="yes" >Yes</option> 					
+				</select>
+			</div> 
+			<div id="captchaDiv">
+				<label class="col-sm-2 control-label">Enter 2captcha key<a href="https://2captcha.com" target="_blank" style="color:red">(?)</a>:</label>
+				<div class="col-sm-10">
+					<input name="ckey" type="text" class="form-control" placeholder="Enter 2captcha key" id="ckey" />
+				</div>
+			</div>
+			<label class="col-sm-2 control-label">Auto Checkout:</label>
+			<div class="col-sm-10">
+				<select name="autocheckoutselect" id="autocheckoutselect" class="size-dropdown form-control">                   
+					<option name="autocheckoutselectname" value="yes" id="autocheckoutselect2" selected >Yes</option>  
+					<option name="autocheckoutselectname" value="no" id="autocheckoutselect1" >No</option> 					
+				</select>
+			</div>               
+			<div id="autocheckout"> 							
+				<div class="col-sm-10" style="display:none" >
+					<label class="col-sm-2 control-label">Checkout Type:</label>
+					<select name="checkoutType" id="checkoutType" class="size-dropdown form-control">
+						<option name="checkoutTypeSelect" value="complete" id="checkoutType2" selected>Full Checkout</option>
+						<option name="checkoutTypeSelect" value="partial" id="checkoutType1" >AutoFill Only</option>              
+					</select>
+				</div> 
+                <div style="display:none">				
+					<label class="col-sm-2 control-label">Checkout Delay:</label>
+					<div class="col-sm-10">
+						<input type="text" name="checkoutDelay" id="checkoutDelay" class="form-control" placeholder="Enter Checkout Delay">
+					</div>
+				</div>
+                <div style="display:none;">				
+				<span align="center" id="loginLine"><h3>WEBSITE LOGIN</h3></span>
+				<div id="loginDiv">
+					<label class="col-sm-2 control-label">Login Id:</label>
+					<div class="col-sm-10">
+						<input type="text" name="username2" id="username2" class="form-control" placeholder="Enter UserId">
+					</div>
+					<label class="col-sm-2 control-label">Login Password:</label>
+					<div class="col-sm-10">
+						<input type="text" name="password2" id="password2" class="form-control" placeholder="Enter Password">
+					</div>				
+				</div>
+				</div>
+				<span align="center" id="storePickup"><h3>PICKUP PERSION DETAIL</h3></span> 
+				<div id="storePickupDetail">
+					<label class="col-sm-2 control-label">First Name:</label>
+					<div class="col-sm-10">
+						<input type="text" name="storeFirstName" id="storeFirstName" class="form-control" placeholder="Enter First Name">
+					</div>
+					<label class="col-sm-2 control-label">Last Name:</label>
+					<div class="col-sm-10">
+						<input type="text" name="storeLastName" id="storeLastName" class="form-control" placeholder="Enter Last Name">
+					</div>
+					<label class="col-sm-2 control-label">Email:</label>
+					<div class="col-sm-10">
+						<input type="text" name="storeEmail" id="storeEmail" class="form-control" placeholder="Enter Email">
+					</div>
+					<label class="col-sm-2 control-label">Phone:</label>
+					<div class="col-sm-10">
+						<input type="text" name="storePhone" id="storePhone" class="form-control" placeholder="Enter Phone Number">
+					</div>
+				</div>
+				<span align="center" id="billingLine"><h3>BILLING ADDRESS</h3></span>  	
+				<div class="checkbox" style="display:none;">
+					<label align="center"><h4>Use My Account Billing Address</h4><input type="checkbox" name="AccountBilling" id="AccountBilling" class="form-control" checked></label>
+				</div>				
+				<div id="billingAddressDiv">	                   					
+					<label class="col-sm-2 control-label">First Name:</label>
+					<div class="col-sm-10">
+						<input type="text" name="billFirstName" id="billFirstName" class="form-control" placeholder="Enter First Name">
+					</div>
+					<label class="col-sm-2 control-label">Last Name:</label>
+					<div class="col-sm-10">
+						<input type="text" name="billLastName" id="billLastName" class="form-control" placeholder="Enter Last Name">
+					</div>
+					<label class="col-sm-2 control-label">Street Address1:</label>
+					<div class="col-sm-10">
+						<input type="text" name="billStreetAddress1" id="billStreetAddress1" class="form-control" placeholder="Enter Street Address1">
+					</div>
+					<label class="col-sm-2 control-label">Street Address2:</label>
+					<div class="col-sm-10">
+						<input type="text" name="billStreetAddress2" id="billStreetAddress2" class="form-control" placeholder="Enter Street Address2">
+					</div>
+					<label class="col-sm-2 control-label">Zip Code:</label>
+					<div class="col-sm-10">
+						<input type="text" name="billZipCode" id="billZipCode" class="form-control" placeholder="Enter Zip Code">
+					</div>
+					<label class="col-sm-2 control-label">City:</label>
+					<div class="col-sm-10">
+						<input type="text" name="billCity" id="billCity" class="form-control" placeholder="Enter City">
+					</div>
+					<label class="col-sm-2 control-label">Country:</label>
+					<div class="col-sm-10">
+						<select id="billCountry" name="billCountry" class="form-control">			
+							<option value="US" selected>United States</option><option value="GB">United Kingdom</option><option value="GG">United Kingdom - Guernsey</option><option value="JE">United Kingdom - Jersey</option><option value="AL">Albania</option><option value="DZ">Algeria</option><option value="AD">Andorra</option><option value="AI">Anguilla</option><option value="AG">Antigua and Barbuda</option><option value="AR">Argentina</option><option value="AM">Armenia</option><option value="AW">Aruba</option><option value="AU">Australia</option><option value="AT">Austria</option><option value="AZ">Azerbaijan</option><option value="BS">Bahamas</option><option value="BH">Bahrain</option><option value="BD">Bangladesh</option><option value="BB">Barbados</option><option value="BY">Belarus</option><option value="BE">Belgium</option><option value="BZ">Belize</option><option value="BM">Bermuda</option><option value="BT">Bhutan</option><option value="BO">Bolivia</option><option value="BA">Bosnia-Herzegovina</option><option value="BW">Botswana</option><option value="BR">Brazil</option><option value="VG">British Virgin Islands</option><option value="BN">Brunei</option><option value="BG">Bulgaria</option><option value="KH">Cambodia</option><option value="CA">Canada</option><option value="CV">Cape Verde Islands</option><option value="KY">Cayman Islands</option><option value="CL">Chile</option><option value="CN">China</option><option value="CO">Colombia</option><option value="KM">Comoros Islands</option><option value="CK">Cook Islands</option><option value="CR">Costa Rica - San José</option><option value="HR">Croatia</option><option value="CY">Cyprus</option><option value="CZ">Czech Republic</option><option value="DK">Denmark</option><option value="DM">Dominica</option><option value="DO">Dominican Republic</option><option value="EC">Ecuador</option><option value="EG">Egypt</option><option value="SV">El Salvador</option><option value="EE">Estonia</option><option value="FK">Falkland Islands</option><option value="FO">Faroe Islands</option><option value="FJ">Fiji</option><option value="FI">Finland</option><option value="FR">France</option><option value="GF">French Guiana</option><option value="PF">French Polynesia</option><option value="GA">Gabon</option><option value="GM">Gambia</option><option value="GE">Georgia</option><option value="DE">Germany</option><option value="GH">Ghana</option><option value="GI">Gibraltar</option><option value="GR">Greece</option><option value="GL">Greenland</option><option value="GD">Grenada</option><option value="GP">Guadeloupe</option><option value="GU">Guam</option><option value="GT">Guatemala</option><option value="GY">Guyana</option><option value="HN">Honduras</option><option value="HK">Hong Kong</option><option value="HU">Hungary</option><option value="IS">Iceland</option><option value="IN" selected="selected">India</option><option value="ID">Indonesia</option><option value="IE">Ireland</option><option value="IL">Israel</option><option value="IT">Italy</option><option value="JM">Jamaica</option><option value="JP">Japan</option><option value="JO">Jordan</option><option value="KZ">Kazakhstan</option><option value="KE">Kenya</option><option value="KW">Kuwait</option><option value="LA">Laos</option><option value="LV">Latvia</option><option value="LB">Lebanon</option><option value="LS">Lesotho</option><option value="LI">Liechtenstein</option><option value="LT">Lithuania</option><option value="LU">Luxembourg</option><option value="MO">Macau</option><option value="MK">Macedonia</option><option value="MG">Madagascar</option><option value="MW">Malawi</option><option value="MY">Malaysia</option><option value="MV">Maldives</option><option value="MT">Malta</option><option value="MQ">Martinique</option><option value="MU">Mauritius</option><option value="MX">Mexico</option><option value="MD">Moldova</option><option value="MC">Monaco</option><option value="MN">Mongolia</option><option value="ME">Montenegro</option><option value="MS">Montserrat</option><option value="MA">Morocco</option><option value="MZ">Mozambique</option><option value="NA">Namibia</option><option value="NP">Nepal</option><option value="NL">Netherlands</option><option value="AN">Netherlands Antilles</option><option value="NC">New Caledonia</option><option value="NZ">New Zealand</option><option value="NI">Nicaragua</option><option value="NO">Norway</option><option value="OM">Oman</option><option value="PA">Panama</option><option value="PG">Papua New Guinea</option><option value="PY">Paraguay</option><option value="PE">Peru</option><option value="PH">Philippines</option><option value="PL">Poland</option><option value="PT">Portugal</option><option value="PR">Puerto Rico</option><option value="QA">Qatar</option><option value="RO">Romania</option><option value="RU">Russia</option><option value="KN">Saint Kitts and Nevis</option><option value="LC">Saint Lucia</option><option value="VC">Saint Vincent and the Grenadines</option><option value="WS">Samoa</option><option value="SM">San Marino</option><option value="ST">Sao Tome + Principe</option><option value="SA">Saudi Arabia</option><option value="SN">Senegal</option><option value="RS">Serbia</option><option value="SC">Seychelles</option><option value="SG">Singapore</option><option value="SK">Slovakia</option><option value="SI">Slovenia</option><option value="SB">Solomon Islands</option><option value="ZA">South Africa</option><option value="KR">South Korea</option><option value="ES">Spain</option><option value="IC">Spain - Canary Islands</option><option value="LK">Sri Lanka</option><option value="BL">St Barthelemy</option><option value="SR">Suriname</option><option value="SZ">Swaziland</option><option value="SE">Sweden</option><option value="CH">Switzerland</option><option value="TW">Taiwan</option><option value="TZ">Tanzania</option><option value="TH">Thailand</option><option value="TL">Timor Leste</option><option value="TG">Togo</option><option value="TO">Tonga</option><option value="TT">Trinidad and Tobago</option><option value="TN">Tunisia</option><option value="TR">Turkey</option><option value="TC">Turks and Caicos Islands</option><option value="TV">Tuvalu</option><option value="VI">U.S. Virgin Islands</option><option value="UA">Ukraine</option><option value="AE">United Arab Emirates</option><option value="UY">Uruguay</option><option value="VU">Vanuatu</option><option value="VE">Venezuela</option><option value="VN">Vietnam</option>
+						</select>  
+					</div>						
+					<label class="col-sm-2 control-label">State:</label>
+					<div class="col-sm-10" id="statesInput">
+						<select name="billState" id="billState" class="form-control" data-default="Select">
+							<option value="AL">Alabama</option><option value="AK">Alaska</option><option value="AS">American Samoa</option><option value="AZ">Arizona</option><option value="AR">Arkansas</option><option value="AF">Armed Forces Africa</option><option value="AA">Armed Forces Americas</option><option value="AC">Armed Forces Canada</option><option value="AE">Armed Forces Europe</option><option value="AM">Armed Forces Middle East</option><option value="AP">Armed Forces Pacific</option><option value="CA">California</option><option value="CO">Colorado</option><option value="CT">Connecticut</option><option value="DE">Delaware</option><option value="DC">District of Columbia</option><option value="FM">Federated States Of Micronesia</option><option value="FL">Florida</option><option value="GA">Georgia</option><option value="GU">Guam</option><option value="HI">Hawaii</option><option value="ID">Idaho</option><option value="IL">Illinois</option><option value="IN">Indiana</option><option value="IA">Iowa</option><option value="KS">Kansas</option><option value="KY">Kentucky</option><option value="LA">Louisiana</option><option value="ME">Maine</option><option value="MH">Marshall Islands</option><option value="MD">Maryland</option><option value="MA">Massachusetts</option><option value="MI">Michigan</option><option value="MN">Minnesota</option><option value="MS">Mississippi</option><option value="MO">Missouri</option><option value="MT">Montana</option><option value="NE">Nebraska</option><option value="NV">Nevada</option><option value="NH">New Hampshire</option><option value="NJ">New Jersey</option><option value="NM">New Mexico</option><option value="NY">New York</option><option value="NC">North Carolina</option><option value="ND">North Dakota</option><option value="MP">Northern Mariana Islands</option><option value="OH">Ohio</option><option value="OK">Oklahoma</option><option value="OR">Oregon</option><option value="PW">Palau</option><option value="PA">Pennsylvania</option><option value="PR">Puerto Rico</option><option value="RI">Rhode Island</option><option value="SC">South Carolina</option><option value="SD">South Dakota</option><option value="TN">Tennessee</option><option value="TX">Texas</option><option value="UT">Utah</option><option value="VT">Vermont</option><option value="VI">Virgin Islands</option><option value="VA">Virginia</option><option value="WA">Washington</option><option value="WV">West Virginia</option><option value="WI">Wisconsin</option><option value="WY">Wyoming</option>
+						</select>						
+					</div>            
+					<label class="col-sm-2 control-label">Phone:</label>
+					<div class="col-sm-10">
+						<input type="text" name="billPhone" id="billPhone" class="form-control" placeholder="Enter Phone Number">
+					</div>
+					<label class="col-sm-2 control-label">Email Address:</label>
+					<div class="col-sm-10">
+						<input type="text" name="billEmail" id="billEmail" class="form-control" placeholder="Enter Email Address">
+					</div>						
+				</div> 
+				<div align="left">
+					<input type="radio" value="bill" name="shipAddress" id="bill" checked="checked"> Ship To Billing Address.
+				</div>
+				<div align="left">
+					<input type="radio" value="new" name="shipAddress" id="new"> Ship To Following Address.
+				</div>				
+				<div id="newAddressDiv"> 
+					<span align="center"><h3>SHIPPING ADDRESS</h3></span>				
+					<label class="col-sm-2 control-label">Country:</label>
+					<div class="col-sm-10">
+						<select id="newCountry" name="newCountry" class="form-control">			
+							<option value="GB">United Kingdom</option><option value="GG">United Kingdom - Guernsey</option><option value="JE">United Kingdom - Jersey</option><option value="US">United States</option><option value="AL">Albania</option><option value="DZ">Algeria</option><option value="AD">Andorra</option><option value="AI">Anguilla</option><option value="AG">Antigua and Barbuda</option><option value="AR">Argentina</option><option value="AM">Armenia</option><option value="AW">Aruba</option><option value="AU">Australia</option><option value="AT">Austria</option><option value="AZ">Azerbaijan</option><option value="BS">Bahamas</option><option value="BH">Bahrain</option><option value="BD">Bangladesh</option><option value="BB">Barbados</option><option value="BY">Belarus</option><option value="BE">Belgium</option><option value="BZ">Belize</option><option value="BM">Bermuda</option><option value="BT">Bhutan</option><option value="BO">Bolivia</option><option value="BA">Bosnia-Herzegovina</option><option value="BW">Botswana</option><option value="BR">Brazil</option><option value="VG">British Virgin Islands</option><option value="BN">Brunei</option><option value="BG">Bulgaria</option><option value="KH">Cambodia</option><option value="CA">Canada</option><option value="CV">Cape Verde Islands</option><option value="KY">Cayman Islands</option><option value="CL">Chile</option><option value="CN">China</option><option value="CO">Colombia</option><option value="KM">Comoros Islands</option><option value="CK">Cook Islands</option><option value="CR">Costa Rica - San José</option><option value="HR">Croatia</option><option value="CY">Cyprus</option><option value="CZ">Czech Republic</option><option value="DK">Denmark</option><option value="DM">Dominica</option><option value="DO">Dominican Republic</option><option value="EC">Ecuador</option><option value="EG">Egypt</option><option value="SV">El Salvador</option><option value="EE">Estonia</option><option value="FK">Falkland Islands</option><option value="FO">Faroe Islands</option><option value="FJ">Fiji</option><option value="FI">Finland</option><option value="FR">France</option><option value="GF">French Guiana</option><option value="PF">French Polynesia</option><option value="GA">Gabon</option><option value="GM">Gambia</option><option value="GE">Georgia</option><option value="DE">Germany</option><option value="GH">Ghana</option><option value="GI">Gibraltar</option><option value="GR">Greece</option><option value="GL">Greenland</option><option value="GD">Grenada</option><option value="GP">Guadeloupe</option><option value="GU">Guam</option><option value="GT">Guatemala</option><option value="GY">Guyana</option><option value="HN">Honduras</option><option value="HK">Hong Kong</option><option value="HU">Hungary</option><option value="IS">Iceland</option><option value="IN" selected="selected">India</option><option value="ID">Indonesia</option><option value="IE">Ireland</option><option value="IL">Israel</option><option value="IT">Italy</option><option value="JM">Jamaica</option><option value="JP">Japan</option><option value="JO">Jordan</option><option value="KZ">Kazakhstan</option><option value="KE">Kenya</option><option value="KW">Kuwait</option><option value="LA">Laos</option><option value="LV">Latvia</option><option value="LB">Lebanon</option><option value="LS">Lesotho</option><option value="LI">Liechtenstein</option><option value="LT">Lithuania</option><option value="LU">Luxembourg</option><option value="MO">Macau</option><option value="MK">Macedonia</option><option value="MG">Madagascar</option><option value="MW">Malawi</option><option value="MY">Malaysia</option><option value="MV">Maldives</option><option value="MT">Malta</option><option value="MQ">Martinique</option><option value="MU">Mauritius</option><option value="MX">Mexico</option><option value="MD">Moldova</option><option value="MC">Monaco</option><option value="MN">Mongolia</option><option value="ME">Montenegro</option><option value="MS">Montserrat</option><option value="MA">Morocco</option><option value="MZ">Mozambique</option><option value="NA">Namibia</option><option value="NP">Nepal</option><option value="NL">Netherlands</option><option value="AN">Netherlands Antilles</option><option value="NC">New Caledonia</option><option value="NZ">New Zealand</option><option value="NI">Nicaragua</option><option value="NO">Norway</option><option value="OM">Oman</option><option value="PA">Panama</option><option value="PG">Papua New Guinea</option><option value="PY">Paraguay</option><option value="PE">Peru</option><option value="PH">Philippines</option><option value="PL">Poland</option><option value="PT">Portugal</option><option value="PR">Puerto Rico</option><option value="QA">Qatar</option><option value="RO">Romania</option><option value="RU">Russia</option><option value="KN">Saint Kitts and Nevis</option><option value="LC">Saint Lucia</option><option value="VC">Saint Vincent and the Grenadines</option><option value="WS">Samoa</option><option value="SM">San Marino</option><option value="ST">Sao Tome + Principe</option><option value="SA">Saudi Arabia</option><option value="SN">Senegal</option><option value="RS">Serbia</option><option value="SC">Seychelles</option><option value="SG">Singapore</option><option value="SK">Slovakia</option><option value="SI">Slovenia</option><option value="SB">Solomon Islands</option><option value="ZA">South Africa</option><option value="KR">South Korea</option><option value="ES">Spain</option><option value="IC">Spain - Canary Islands</option><option value="LK">Sri Lanka</option><option value="BL">St Barthelemy</option><option value="SR">Suriname</option><option value="SZ">Swaziland</option><option value="SE">Sweden</option><option value="CH">Switzerland</option><option value="TW">Taiwan</option><option value="TZ">Tanzania</option><option value="TH">Thailand</option><option value="TL">Timor Leste</option><option value="TG">Togo</option><option value="TO">Tonga</option><option value="TT">Trinidad and Tobago</option><option value="TN">Tunisia</option><option value="TR">Turkey</option><option value="TC">Turks and Caicos Islands</option><option value="TV">Tuvalu</option><option value="VI">U.S. Virgin Islands</option><option value="UA">Ukraine</option><option value="AE">United Arab Emirates</option><option value="UY">Uruguay</option><option value="VU">Vanuatu</option><option value="VE">Venezuela</option><option value="VN">Vietnam</option>
+						</select>  
+					</div>
+					<label class="col-sm-2 control-label">First Name:</label>
+					<div class="col-sm-10">
+						<input type="text" name="newFirstName" id="newFirstName" class="form-control" placeholder="Enter First Name">
+					</div>
+					<label class="col-sm-2 control-label">Last Name:</label>
+					<div class="col-sm-10">
+						<input type="text" name="newLastName" id="newLastName" class="form-control" placeholder="Enter Last Name"> 
+					</div>
+					<label class="col-sm-2 control-label">Street Address1:</label>
+					<div class="col-sm-10">
+						<input type="text" name="newStreetAddress1" id="newStreetAddress1" class="form-control" placeholder="Enter Street Address1">
+					</div>
+						<label class="col-sm-2 control-label">Street Address2:</label>
+					<div class="col-sm-10">
+						<input type="text" name="newStreetAddress2" id="newStreetAddress2" class="form-control" placeholder="Enter Street Address2">
+					</div>
+					<label class="col-sm-2 control-label">Zip Code:</label>
+					<div class="col-sm-10">
+						<input type="text" name="newZipCode" id="newZipCode" class="form-control" placeholder="Enter Zip Code"> 
+					</div>
+					<label class="col-sm-2 control-label">City:</label>
+					<div class="col-sm-10">
+						<input type="text" name="newCity" id="newCity" class="form-control" placeholder="Enter City"> 
+					</div>
+					<label class="col-sm-2 control-label">State:</label>
+					<div class="col-sm-10" id="newstatesInput">
+						<select name="newState" id="newState" class="form-control" data-default="Select">
+							<option value="AL">Alabama</option><option value="AK">Alaska</option><option value="AS">American Samoa</option><option value="AZ">Arizona</option><option value="AR">Arkansas</option><option value="AF">Armed Forces Africa</option><option value="AA">Armed Forces Americas</option><option value="AC">Armed Forces Canada</option><option value="AE">Armed Forces Europe</option><option value="AM">Armed Forces Middle East</option><option value="AP">Armed Forces Pacific</option><option value="CA">California</option><option value="CO">Colorado</option><option value="CT">Connecticut</option><option value="DE">Delaware</option><option value="DC">District of Columbia</option><option value="FM">Federated States Of Micronesia</option><option value="FL">Florida</option><option value="GA">Georgia</option><option value="GU">Guam</option><option value="HI">Hawaii</option><option value="ID">Idaho</option><option value="IL">Illinois</option><option value="IN">Indiana</option><option value="IA">Iowa</option><option value="KS">Kansas</option><option value="KY">Kentucky</option><option value="LA">Louisiana</option><option value="ME">Maine</option><option value="MH">Marshall Islands</option><option value="MD">Maryland</option><option value="MA">Massachusetts</option><option value="MI">Michigan</option><option value="MN">Minnesota</option><option value="MS">Mississippi</option><option value="MO">Missouri</option><option value="MT">Montana</option><option value="NE">Nebraska</option><option value="NV">Nevada</option><option value="NH">New Hampshire</option><option value="NJ">New Jersey</option><option value="NM">New Mexico</option><option value="NY">New York</option><option value="NC">North Carolina</option><option value="ND">North Dakota</option><option value="MP">Northern Mariana Islands</option><option value="OH">Ohio</option><option value="OK">Oklahoma</option><option value="OR">Oregon</option><option value="PW">Palau</option><option value="PA">Pennsylvania</option><option value="PR">Puerto Rico</option><option value="RI">Rhode Island</option><option value="SC">South Carolina</option><option value="SD">South Dakota</option><option value="TN">Tennessee</option><option value="TX">Texas</option><option value="UT">Utah</option><option value="VT">Vermont</option><option value="VI">Virgin Islands</option><option value="VA">Virginia</option><option value="WA">Washington</option><option value="WV">West Virginia</option><option value="WI">Wisconsin</option><option value="WY">Wyoming</option>
+						</select>						
+					</div>
+					<label class="col-sm-2 control-label">Phone:</label>
+					<div class="col-sm-10">
+						<input type="text" name="newPhone" id="newPhone" class="form-control" placeholder="Enter Phone Number"> 
+					</div>
+					<label class="col-sm-2 control-label">Email Address:</label>
+					<div class="col-sm-10">
+						<input type="text" name="newEmail" id="newEmail" class="form-control" placeholder="Enter Email Address"> 
+					</div>
+				</div>
+				<span align="center" id="payment"><h3>PAYMENT METHOD</h3></span>
+				<div id="paymentMethodDiv">
+					<label class="col-sm-2 control-label">Payment Method:</label>
+					<div class="col-sm-10">
+						<select id="paymentMethod" name="paymentMethod" class=" form-control">
+							<option value="paypal">PayPal</option>
+							<option value="creditCard">CreditCard</option>													
+						</select>
+					</div>
+					<label class="col-sm-2 control-label">Gift Card:</label>
+					<div class="col-sm-10">
+						<select id="giftCard" name="paymentMethod" class=" form-control">
+							<option value="yes">yes</option>
+							<option value="no">No</option>													
+						</select>
+					</div>
+					<div id="giftCardDiv">
+						<label class="col-sm-2 control-label">GiftCard Number:</label>
+						<div class="col-sm-10">
+							<input type="text" name="giftCardNumber" id="giftCardNumber" style="color:grey;" class="form-control" placeholder="Enter giftcard Number">
+						</div>
+						<label class="col-sm-2 control-label">GiftCard Password:</label>
+						<div class="col-sm-10">
+							<input type="text" name="giftCardPassword" id="giftCardPassword" style="color:grey;" class="form-control" placeholder="Enter Giftcard Password">
+						</div> 				
+					</div>
+                    <br/> 					
+					<div id="paypalDiv">
+						<label class="col-sm-2 control-label">PayPal Id:</label>
+						<div class="col-sm-10">
+							<input type="text" name="paypalEmail" id="paypalEmail" style="color:grey;" class="form-control" placeholder="Enter PayPal Id">
+						</div>
+						<label class="col-sm-2 control-label">PayPal Password:</label>
+						<div class="col-sm-10">
+							<input type="text" name="paypalPassword" id="paypalPassword" style="color:grey;" class="form-control" placeholder="Enter PayPal Password">
+						</div> 				
+					</div>
+					
+					<div id="creditcardDiv"> 
+						<label class="col-sm-2 control-label">Card Type:</label>
+						<div class="col-sm-10">
+							<select id="paymentCard" name="paymentCard" class=" form-control">
+								<option value="MC">MasterCard</option>								
+								<option value="VI">Visa</option>
+								<option value="AE">American Express</option>
+								<option value="DI">Discover</option>
+								<option value="JCB">JCB</option>
+							</select>
+						</div>					
+						<label class="col-sm-2 control-label">Card Number:</label> 
+						<div class="col-sm-10">                        
+							<input type="text" style="color:grey;" autocomplete="off" maxlength="19" size="19" value="" name="payMethodPaneCardNumber" id="cardNumber" class="form-control">
+						</div>
+						<label class="col-sm-2 control-label">Name On Card:</label> 
+						<div class="col-sm-10">
+							<input type="text" style="color:grey;" autocomplete="off" value="" name="cardHolderName" id="cardHolderName" class="form-control"> </div>            
+						<label class="col-sm-2 control-label">Expiration Date:</label>
+						<div class="col-sm-10">
+							<select name="payMethodPaneExpireMonth" id="expireMonth" class="form-control" >                   
+								<option value="01">January</option>
+								<option value="02">February</option>
+								<option value="03">March</option>
+								<option value="04">April</option>
+								<option value="05">May</option>
+								<option value="06">June</option>
+								<option value="07">July</option>
+								<option value="08">August</option>
+								<option value="09">September</option>
+								<option value="10">October</option>
+								<option value="11">November</option>
+								<option value="12">December</option>
+							</select>
+							<select name="payMethodPaneExpireYear" id="expireYear" class="form-control" > 
+								<option value="18">2018</option>
+								<option value="19">2019</option>
+								<option value="20">2020</option>
+								<option value="21">2021</option>
+								<option value="22">2022</option>
+								<option value="23">2023</option>
+								<option value="24">2024</option>
+								<option value="25">2025</option>
+								<option value="26">2026</option>
+								<option value="27">2027</option>
+								<option value="28">2028</option>
+								<option value="29">2029</option>
+								<option value="30">2030</option>
+								<option value="31">2031</option>
+								<option value="32">2032</option>
+							</select>
+						</div>
+						<label class="col-sm-2 control-label">Card CVV:</label>
+						<div class="col-sm-10">
+							<input type="text" maxlength="4" style="color:grey;" size="3" id="cardCVV" name="payMethodPaneCVV" class="form-control">
+						</div>
+					</div>
+				</div>
+			</div><br/>
+			<div align="center">
+				<button href="#" id="save" value="SAVE"class="btn-info myButton btn btn-large" style="align:center;">
+					<span align="center"><h4> SAVE </h4></span>
+				</button>			
+				<button href="#" id="start" value="START"class="btn-success myButton btn btn-large" style="align:center;">
+					<span align="center"><h4> START </h4></span>
+				</button>
+			</div>
+        </div>
+    </div> 
+</body>
+
