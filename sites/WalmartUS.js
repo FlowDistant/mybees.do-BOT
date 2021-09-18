@@ -179,10 +179,7 @@ chrome.extension.sendMessage({action: "isRecordingOn"}, function(response) {
 			$("#onetrust-consent-sdk").remove();  
 			//material-icons bees-modal-close
 
-				if($(c0000xxxx).is(":visible")){
-					if(soundAlert=="yes"){
-								chrome.extension.sendMessage({action: "alert"}, function(response) {});
-					}
+				if($(c0000xxxx).is(":visible")){				
                          
 							var qty_bees = document.getElementsByClassName(c0001xxxx)[0].value;											
 
