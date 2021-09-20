@@ -217,11 +217,8 @@ chrome.extension.sendMessage({action: "isRecordingOn"}, function(response) {
 				clearInterval(v22);
 			
 
-				if($(c001iccxx.replace("%product-title%",sessionStorage.getItem('prg'))).is(":visible")) {
-									
-							
-					setTimeout(function(){   $(c002iccxx)[0].click()   }, 7000);
-					
+				if($(c001iccxx.replace("%product-title%",sessionStorage.getItem('prg'))).is(":visible")) {															
+					setTimeout(function(){   $(c002iccxx)[0].click()   }, 7000);				
 				}
 				
 			},60000);	
