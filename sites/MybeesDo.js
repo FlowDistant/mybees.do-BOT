@@ -55,6 +55,7 @@ chrome.extension.sendMessage({action: "isRecordingOn"}, function(response) {
 		var  c003icrxx = "bees-text"; // confirmacion time
 
         var  c503error = "span:contains('503 - Servicio no disponible')"; // confirmacion time
+		var  c0000bm01 = ".bees-modal-close";
 
 
 		
@@ -75,7 +76,12 @@ chrome.extension.sendMessage({action: "isRecordingOn"}, function(response) {
            v0 = setInterval(function(){
 
 
-			$("#onetrust-consent-sdk").remove();  
+			$("#onetrust-consent-sdk").remove();
+			  
+			if($(c0000bm01).is(":visible")){
+				$(c0000bm01)[0].click();
+			}
+
 			//material-icons bees-modal-close
 
 				if($(c0000xxxx).is(":visible")){				
