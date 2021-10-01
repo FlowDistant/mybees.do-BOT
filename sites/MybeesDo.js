@@ -55,7 +55,11 @@ chrome.extension.sendMessage({action: "isRecordingOn"}, function(response) {
 		var  c003icrxx = "bees-text"; // confirmacion time
 
         var  c503error = "span:contains('503 - Servicio no disponible')"; // confirmacion time
+		var  c502error = "h1:contains('502 Bad Gateway')"; // confirmacion time
+		var  c500ierror = ".bees-loader"; // confirmacion time
+
 		var  c0000bm01 = ".bees-modal-close";
+		
 
 
 		
@@ -88,9 +92,9 @@ chrome.extension.sendMessage({action: "isRecordingOn"}, function(response) {
                          
 							var qty_bees = document.getElementsByClassName(c0001xxxx)[0].value;											
 
-							if(qty_bees != quantity || qty_bees > quantity){
+							if(qty_bees != quantity || !qty_bees > quantity){
                               
-								for(i=0;i<=quantity-1;i++){
+								for(i=0;i<=quantity-qty_bees-1;i++){
 							    	document.getElementsByClassName(c0003xxxx)[0].click();    
 							    }	
 
@@ -123,8 +127,10 @@ chrome.extension.sendMessage({action: "isRecordingOn"}, function(response) {
 							}*/		
 						clearInterval(v0);				
 				}else{
+
+					//bees-loader
 					
-			        if($(c503error).is(":visible") || $("p:contains('Varnish cache server')").is(":visible") || $("h2:contains('503 - Servicio no disponible')").is(":visible") || $("h1:contains('400 Bad Request')").is(":visible")){
+			        if($(c500ierror).is(":visible") || $(c502error).is(":visible") || $(c503error).is(":visible") || $("p:contains('Varnish cache server')").is(":visible") || $("h2:contains('503 - Servicio no disponible')").is(":visible") || $("h1:contains('400 Bad Request')").is(":visible")){
 
 				        location.reload(true);	
 
