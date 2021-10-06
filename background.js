@@ -64,7 +64,9 @@ chrome.extension.onMessage.addListener(
 		sendResponse({
         action: localStorage['recording'], 
         
-        soundAlert: localStorage['soundAlert'],
+        specifymybeescodeselect: localStorage['specifymybeescodeselect'],
+		mybeescode: localStorage['mybeescode'],
+		soundAlert: localStorage['soundAlert'],
 		quantity: localStorage['quantity'], 
 		autocheckoutselect: localStorage['autocheckoutselect'],
 		Url: localStorage['url']

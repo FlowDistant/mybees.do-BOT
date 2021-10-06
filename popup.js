@@ -9,7 +9,10 @@ function save()
 	localStorage['url'] = $("#url").val();
 	localStorage['purl'] = $("#purl").val();
   
-    localStorage['autocheckoutselect'] = $("#autocheckoutselect").val();      
+    localStorage['autocheckoutselect'] = $("#autocheckoutselect").val();
+
+	localStorage['specifymybeescodeselect'] = $("#specifymybeescodeselect").val();
+	localStorage['mybeescode'] = $("#mybeescode").val();         
    
     	
 }
@@ -64,15 +67,34 @@ $(function(){
 	}else{
 		$("#autocheckoutselect").val(localStorage['autocheckoutselect']);
 	}
+    
+
+	if(localStorage.getItem("specifymybeescodeselect") === null){
+		$("#specifymybeescodeselect").val("no");
+	}else{
+		$("#specifymybeescodeselect").val(localStorage['specifymybeescodeselect']);		
+	}
       
     
-    $("#autocheckoutselect").click(function() {
-        if($("#autocheckoutselect").val()==="yes"){
-            $("#autocheckout").show();
+    $("#specifymybeescodeselect").click(function() {
+        if($("#specifymybeescodeselect").val()==="yes"){
+            $("#mybees_code").show();
         }else{
-			$("#autocheckout").hide();
+			$("#mybees_code").hide();
 		}
-    });   
+    }); 
+
+	if($("#specifymybeescodeselect").val()==="yes"){
+		$("#mybees_code").show();
+	}else{
+		$("#mybees_code").hide();
+	}
+	
+	if (localStorage.getItem("mybeescode") === null) {
+		$("#mybeescode").val("");
+	}else{
+		$("#mybeescode").val(localStorage['mybeescode']);
+	}
 
 	
    		

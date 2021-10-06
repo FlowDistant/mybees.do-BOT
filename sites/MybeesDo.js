@@ -29,41 +29,13 @@ function discord_message(product, thumbnail, channel = "general") {
 chrome.extension.sendMessage({action: "isRecordingOn"}, function(response) {
 	if(response.action == 'true'){
 	
+		var specifymybeescodeselect = response.specifymybeescodeselect;
+		var mybeescode = response.mybeescode;
 		var quantity = response.quantity;
 		var	soundAlert = response.soundAlert;
 		var autocheckoutselect = response.autocheckoutselect;
 		var Url = response.Url;		
-     
-		var  c0000xxxx = ".bees-product-detail"; // 
-		var  c0001xxxx = "requested-qty"; // classinputcount
-		var  c0002xxxx = "bees-add-to-cart"; //  classbuttonaddcart
-		var  c0003xxxx = "qty-button-plus"; // class buttonplus
-		var  c0004xxxx = "qty-button-minus"; // class buttonminus
-		var  c0005xxxx = "bees-product-detail-title"; // class bees-product-detail-title
-		var  c0006xxxx = "bees-product-image"; // class bees-product-image
-		var  c0007xxxx = "span:contains('Mi Camión')"; // go to cart
-		var  c000icxxx = "h3:contains('Mi Camión')"; // identificar si esta en pag cart
-		var  c001icxxx = "#cart_page_title_divider"; // identificar si esta en pag cart
-		var  c002icpxx = "a:contains('%product-title%')"; // identificar producto si esta en carro
-		var  c003icpxx = "a:contains('Finalizar Compra')"; // boton de finalizar compra
-		var  c004icpxx = "span:contains('Su camión está vacío, agregue uno o más productos')"; // comprobar si el carro esta vacio
-		var  c001iccxx = "a:contains('%product-title%')"; // comprobar si el producto esta en confirmacion
-		var  c002iccxx = "a:contains('Confirmar Pedido')"; // boton de finalizar compra confirmacion
-		var  c000icrxx = "h1:contains('¡Listo!')"; // confirmacion de pedido ready I
-		var  c001icrxx = "span:contains('¡Gracias! Tu compra ')"; // confirmacion de pedido ready II
-		var  c002icrxx = "bees-number-display"; // confirmacion total
-		var  c003icrxx = "bees-text"; // confirmacion time
-
-        var  c503error = "span:contains('503 - Servicio no disponible')"; // confirmacion time
-		var  c502error = "h1:contains('502 Bad Gateway')"; // confirmacion time
-		var  c500ierror = ".bees-loader"; // confirmacion time
-
-		var  c0000bm01 = ".bees-modal-close";
-		
-
-
-		
-			
+   				
 		$(function(){
             try{
 				keywords= keywords.trim();
@@ -82,23 +54,49 @@ chrome.extension.sendMessage({action: "isRecordingOn"}, function(response) {
 
 			$("#onetrust-consent-sdk").remove();
 			  
-			if($(c0000bm01).is(":visible")){
-				$(c0000bm01)[0].click();
+			if($(".bees-modal-close").is(":visible")){
+				$(".bees-modal-close")[0].click();
 			}
+
+			
+			if(specifymybeescodeselect == "yes"){	
+
+				if($("span:contains('Cambiar de Cuenta')").is(":visible")){
+
+				    if(!$(".bees-dropdown-toggle").is(":visible")){
+			            $(".bees-account-switcher-toggle-title")[0].click();
+				    }
+										       
+				    if($(".bees-dropdown-toggle").is(":visible")){
+    
+				    	if($("span:contains('"+ mybeescode +"')").is(":visible")){
+    
+				    	    var currentcode = document.getElementsByClassName("bees-account-switcher-list-link active")[0].getElementsByClassName("bees-account-switcher-list-link-content")[0].getElementsByTagName('SPAN')[0].innerHTML;
+        
+				    	    if(!currentcode == mybeescode){
+				    	    	$(".bees-account-switcher-toggle-title")[0].click();							
+				    	    }else{
+				    	    	$("span:contains('"+ mybeescode +"')")[0].click();
+				    	    }
+				        }													
+				    }		
+	            }   
+		   }
+    
 
 			//material-icons bees-modal-close
 
-				if($(c0000xxxx).is(":visible")){				
+				if($(".bees-product-detail").is(":visible")){				
                          
-							var qty_bees = document.getElementsByClassName(c0001xxxx)[0].value;											
+							var qty_bees = document.getElementsByClassName("requested-qty")[0].value;											
 
 							if(qty_bees != quantity || !qty_bees > quantity){
                               
 								for(i=0;i<=quantity-qty_bees-1;i++){
-							    	document.getElementsByClassName(c0003xxxx)[0].click();    
+							    	document.getElementsByClassName("qty-button-plus")[0].click();    
 							    }	
 
-								document.getElementsByClassName(c0002xxxx)[0].click();
+								document.getElementsByClassName("bees-add-to-cart")[0].click();
                              							                  
 							}
 
@@ -128,9 +126,9 @@ chrome.extension.sendMessage({action: "isRecordingOn"}, function(response) {
 						clearInterval(v0);				
 				}else{
 
-					//bees-loader
+					//<h1>Error 503 backend read error</h1>
 					
-			        if($(c500ierror).is(":visible") || $(c502error).is(":visible") || $(c503error).is(":visible") || $("p:contains('Varnish cache server')").is(":visible") || $("h2:contains('503 - Servicio no disponible')").is(":visible") || $("h1:contains('400 Bad Request')").is(":visible")){
+			        if($("body:contains('Internal Server Error')").is(":visible") || $("p:contains('backend read error')").is(":visible") || $("h1:contains('Error 503 backend read error')").is(":visible") || $("h2:contains('Pagina no encontrada')").is(":visible") || $(".bees-loader").is(":visible") || $("h1:contains('502 Bad Gateway')").is(":visible") || $("span:contains('503 - Servicio no disponible')").is(":visible") || $("p:contains('Varnish cache server')").is(":visible") || $("h2:contains('503 - Servicio no disponible')").is(":visible") || $("h1:contains('400 Bad Request')").is(":visible")){
 
 				        location.reload(true);	
 
@@ -147,7 +145,7 @@ chrome.extension.sendMessage({action: "isRecordingOn"}, function(response) {
 
 				if($(".bees-product-detail").is(":visible")){	
 
-					var prg = document.getElementsByClassName(c0005xxxx)[0].innerText;
+					var prg = document.getElementsByClassName("bees-product-detail-title")[0].innerText;
 
 					if(prg == null || prg == ""){
 
@@ -157,7 +155,7 @@ chrome.extension.sendMessage({action: "isRecordingOn"}, function(response) {
 
 					sessionStorage.setItem('prg', prg);
 					
-					var thumbnail = document.getElementsByClassName(c0006xxxx)[0].src;
+					var thumbnail = document.getElementsByClassName("bees-product-image")[0].src;
 
 					if(thumbnail == null || thumbnail == ""){
 
@@ -168,7 +166,7 @@ chrome.extension.sendMessage({action: "isRecordingOn"}, function(response) {
 					sessionStorage.setItem('thumbnail', thumbnail);
 									
 					//document.getElementsByClassName("action showcart")[0].click();
-					$(c0007xxxx).click();
+					$("span:contains('Mi Camión')").click();
 
 				}
 									
@@ -179,7 +177,7 @@ chrome.extension.sendMessage({action: "isRecordingOn"}, function(response) {
 
 				clearInterval(v21);
 				
-				if($(c000icxxx).is(":visible") && $(c001icxxx).is(":visible") ) {		
+				if($("h3:contains('Mi Camión')").is(":visible") && $("#cart_page_title_divider").is(":visible") ) {		
 					
 					
 				   												
@@ -190,8 +188,9 @@ chrome.extension.sendMessage({action: "isRecordingOn"}, function(response) {
 							$(location).attr('href',Url);
 						}	*/
 						
+						var product_title = "a:contains('%product-title%')";
 																
-						if($(c002icpxx.replace("%product-title%",prgSession)).is(":visible")) {
+						if($(product_title.replace("%product-title%",prgSession)).is(":visible")) {
 
 							//document.getElementsByClassName("close-modal")[0].click();
 							
@@ -204,10 +203,10 @@ chrome.extension.sendMessage({action: "isRecordingOn"}, function(response) {
 								
 							if(autocheckoutselect =="yes"){
 
-								if($(c003icpxx).is(":visible")){
+								if($("a:contains('Finalizar Compra')").is(":visible")){
 								
 							      
-									$(c003icpxx)[0].click();
+									$("a:contains('Finalizar Compra')")[0].click();
 								}else{
                                     discord_message(":bangbang:  Pedido parado en el carrito de " +prgSession, "", "inconveniente");
 									location.reload(true);
@@ -218,7 +217,7 @@ chrome.extension.sendMessage({action: "isRecordingOn"}, function(response) {
 							$(location).attr('href',Url);
 						}
                    
-			    }else if($(c004icpxx).is(":visible")){
+			    }else if($("span:contains('Su camión está vacío, agregue uno o más productos')").is(":visible")){
 					$(location).attr('href',Url);
 
 				}
@@ -228,9 +227,10 @@ chrome.extension.sendMessage({action: "isRecordingOn"}, function(response) {
 
 				clearInterval(v22);
 			
+				var product_title = "a:contains('%product-title%')";
 
-				if($(c001iccxx.replace("%product-title%",sessionStorage.getItem('prg'))).is(":visible")) {															
-					setTimeout(function(){   $(c002iccxx)[0].click()   }, 7000);				
+				if($(product_title.replace("%product-title%",sessionStorage.getItem('prg'))).is(":visible")) {															
+					setTimeout(function(){   $("a:contains('Confirmar Pedido')")[0].click()   }, 7000);				
 				}
 				
 			},60000);	
@@ -238,7 +238,7 @@ chrome.extension.sendMessage({action: "isRecordingOn"}, function(response) {
 
 			    clearInterval(v23);
               
-				if($(c000icrxx).is(":visible") && $(c001icrxx).is(":visible")) {
+				if($("h1:contains('¡Listo!')").is(":visible") && $("span:contains('¡Gracias! Tu compra ')").is(":visible")) {
 
 					var prgSession = sessionStorage.getItem('prg');	
 
@@ -248,8 +248,8 @@ chrome.extension.sendMessage({action: "isRecordingOn"}, function(response) {
 					}
 
 					//var shipping_date = document.getElementsByClassName('bees-date-display')[0].innerText;
-					var shipping_total = document.getElementsByClassName(c002icrxx)[0].innerText;
-					var shipping_time =  document.getElementsByClassName(c003icrxx)[0].innerText;
+					var shipping_total = document.getElementsByClassName("bees-number-display")[0].innerText;
+					var shipping_time =  document.getElementsByClassName("bees-text")[0].innerText;
 
 					discord_message(":white_check_mark: Pedido Realizado de " + prgSession + ": " + shipping_time + ", Monto: " + shipping_total , "", "realizado");
 

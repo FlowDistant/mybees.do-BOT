@@ -22,12 +22,6 @@
 			  <div class="col-sm-10">
 								  
 			  </div>
-			  <div id="product_page" style="display: none;">
-				   <label class="col-sm-2 control-label">Enter The Collection Page Link:</label>
-				  <div class="col-sm-10">
-					  <input type="text" name="purl" id="purl" class="form-control" placeholder="Enter the collection page url">
-				  </div>
-			  </div>
 			  <div id="url_div" style="display: block;">
 				   <label class="col-sm-2 control-label">Enter The Product Page URL:</label>
 				  <div class="col-sm-10">
@@ -44,22 +38,30 @@
 					  <option value="yes" selected="">Yes</option>  
 					  <option value="no">No</option> 					
 				  </select>
-			  </div>  
-								  
-				  
-					
-			  
-			  
-			  
-			   
-			  
+			  </div>  								  										  						  
 			  <label class="col-sm-2 control-label">Auto Checkout:</label>
 			  <div class="col-sm-10">
 				  <select name="autocheckoutselect" id="autocheckoutselect" class="size-dropdown form-control">                   
 					  <option name="autocheckoutselectname" value="yes" id="autocheckoutselect2" selected="">Yes</option>  
 					  <option name="autocheckoutselectname" value="no" id="autocheckoutselect1">No</option> 					
 				  </select>
-			  </div>               
+			  </div>  
+			  
+			  <label class="col-sm-2 control-label">Specify mybees code:</label>
+			  <div class="col-sm-10">
+				  <select name="specifymybeescodeselect" id="specifymybeescodeselect" class="size-dropdown form-control">                   
+					  <option name="specifymybeescodeselectname" value="yes" id="specifymybeescodeselect2" selected="">Yes</option>  
+					  <option name="specifymybeescodeselectname" value="no" id="specifymybeescodeselect1">No</option> 					
+				  </select>
+			  </div> 
+			  
+			  <div id="mybees_code" style="display: none;">
+				<label class="col-sm-2 control-label">Mybees code:</label>
+			   <div class="col-sm-10">
+				   <input type="text" name="mybeescode" id="mybeescode" class="form-control" placeholder="Enter the Mybees code">
+			   </div>
+		   </div>
+
 			  <br>
 			  <div align="center">
 				  <button href="#" id="save" value="SAVE" class="btn-info myButton btn btn-large" style="align:center;">
