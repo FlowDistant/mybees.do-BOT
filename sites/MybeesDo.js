@@ -58,6 +58,11 @@ chrome.extension.sendMessage({action: "isRecordingOn"}, function(response) {
 				$(".bees-modal-close")[0].click();
 			}
 
+
+			if( $('body').is(':empty') ) {
+				 location.reload(true); 
+			} 
+
 			
 			if(specifymybeescodeselect == "yes"){	
 
@@ -126,9 +131,9 @@ chrome.extension.sendMessage({action: "isRecordingOn"}, function(response) {
 						clearInterval(v0);				
 				}else{
 
-					//<h1>Error 503 backend read error</h1>
 					
-			        if($("body:contains('Internal Server Error')").is(":visible") || $("p:contains('backend read error')").is(":visible") || $("h1:contains('Error 503 backend read error')").is(":visible") || $("h2:contains('Pagina no encontrada')").is(":visible") || $(".bees-loader").is(":visible") || $("h1:contains('502 Bad Gateway')").is(":visible") || $("span:contains('503 - Servicio no disponible')").is(":visible") || $("p:contains('Varnish cache server')").is(":visible") || $("h2:contains('503 - Servicio no disponible')").is(":visible") || $("h1:contains('400 Bad Request')").is(":visible")){
+					
+			        if($("h1:contains('503')").is(":visible") ||$("h2:contains('Servicio no disponible.')").is(":visible") || $("body:contains('Internal Server Error')").is(":visible") || $("p:contains('backend read error')").is(":visible") || $("h1:contains('Error 503 backend read error')").is(":visible") || $("h2:contains('Pagina no encontrada')").is(":visible") || $(".bees-loader").is(":visible") || $("h1:contains('502 Bad Gateway')").is(":visible") || $("span:contains('503 - Servicio no disponible')").is(":visible") || $("p:contains('Varnish cache server')").is(":visible") || $("h2:contains('503 - Servicio no disponible')").is(":visible") || $("h1:contains('400 Bad Request')").is(":visible")){
 
 				        location.reload(true);	
 
